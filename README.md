@@ -15,3 +15,23 @@
     node_modules
     .idea
     DS_Store
+git提交代码
+```
+git init
+git add .
+git commit -m '初始化项目和安装依赖'
+git remote add origin https://github.com/wlimiy/NodeBlog.git
+git push origin master
+```
+### 创建服务
+应用技术：express+mongoose
+
+server.js
+```
+let express=require('express');
+let app=express();
+app.listen(8080,()=>{
+    console.log(8080)
+});
+```
+
