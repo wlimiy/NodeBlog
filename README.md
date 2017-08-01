@@ -3,7 +3,7 @@
 >npm init -y：全部使用默认初始化
 
 这个命令会创建一个package.json文件
->sudo npm install body-parser cookie-parser debug ejs express morgan serve-favicon express-session connect-mongo mongoose connect-flash multer async -S
+>sudo npm install body-parser cookie-parser debug ejs express morgan serve-favicon express-session connect-mongo mongoose connect-flash multer async bootstrap jquery -S
 
 >发布依赖 --save（别名"-S"）：上线开发全需要，例如：mime
 
@@ -62,3 +62,29 @@ let article=require('./routes/article');
 //用路径变为/article时，跳转到article路由
 app.use('/article',article);
 ```
+### 引入ejs模板引擎
+
+server.js
+```
+let path=require('path');
+app.set('view engine','html');//1、设置模板引擎html
+app.set('views',path.resolve('views'));//2、指定模板的存放目录
+app.engine('html',require('ejs').__express);//3、指定对于html类型的模板使用js方法来进行渲染
+
+```
+
+### 设置html页面
+
+建立public文件夹，放css,图片等静态文件
+
+设置views/index.html
+
+```
+在index.html中引入bootstrap.css:
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css">
+引入jquery.js,bootstrap.js
+    <script src="jquery/dist/jquery.js"></script>
+    <script src="bootstrap/dist/js/bootstrap.js"></script>
+```
+server.js要引入静态文件中间件
+>app.use(express.static(path.resolve('node_modules')));
