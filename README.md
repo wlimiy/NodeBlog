@@ -11,6 +11,7 @@
 
 ### 创建并初始化git
 .gitignore
-    node_module
+
+    node_modules
     .idea
     DS_Store
