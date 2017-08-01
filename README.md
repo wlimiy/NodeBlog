@@ -34,4 +34,31 @@ app.listen(8080,()=>{
     console.log(8080)
 });
 ```
+### 跑通路由
 
+使用路由中间件
+```
+/ ：首页
+/user/login ：用户登录
+/user/signup ：用户注册
+/user/signin ：登录
+/user/signout ：退出
+/article/add ：发表文章
+```
+routes/article.js
+```
+let express=require('express');
+let router=express.Router();
+router.get('/add',function(req,res){
+    res.send('发表文章')
+})
+//导出路由
+module.exports=router;
+```
+server.js
+```
+//把路由引入到服务器
+let article=require('./routes/article');
+//用路径变为/article时，跳转到article路由
+app.use('/article',article);
+```
